@@ -45,7 +45,7 @@ top
  │   │   ├── global.scss
  │   │   ├── scrollbar.scss
  │   │   └── variables.scss
- │   └── views                              # 视图目录
+ │   ├── views                              # 视图目录
  │   │   ├── AboutView.vue
  │   │   └── HomeView.vue
  │   ├── App.vue
