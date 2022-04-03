@@ -11,7 +11,6 @@
 <style lang="scss">
 @import "@/style/variables.scss";
 @import "@/style/global.scss";
-@import "@/style/scrollbar.scss";
 @import "@/style/element-ui-reset.scss"; // 重设element ui的样式都写于这个scss
 
 body {

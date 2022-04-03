@@ -28,7 +28,7 @@ top
  │   │   └── table-page.js
  │   ├── datas                              # 模拟数据，临时存放
  │   ├── directives                         # 自定义指令
- │   ├── entity                             # 实体，类似后端的实体
+ │   ├── entity                             # 实体，类似后端的实体，也称model层
  │   ├── filters                            # 过滤器，全局工具
  │   ├── lib                                # 外部引用的插件存放及修改文件
  │   │   └── http.js                        # Axios的封装
@@ -40,17 +40,16 @@ top
  │   │   ├── index.js
  │   │   └── module
  │   ├── style                              # 影响全局的样式表
- │   │   ├── element-ui-reset.scss
- │   │   ├── element-variables.scss
- │   │   ├── global.scss
- │   │   ├── scrollbar.scss
- │   │   └── variables.scss
+ │   │   ├── element-ui-reset.scss          # element-ui重设样式
+ │   │   ├── element-variables.scss         # element-ui自定义主题的变量
+ │   │   ├── global.scss                    # 全局样式表
+ │   │   └── variables.scss                 # 常用的scss常量；原则上颜色都必须定义在此
  │   ├── views                              # 视图目录
  │   │   ├── AboutView.vue
  │   │   └── HomeView.vue
  │   ├── App.vue
  │   └── main.js
- ├── .editorconfig
+ ├── .editorconfig                          # 编辑器设置
  ├── .env.development                       # 开发环境（dev,用于本地开发，连接开发环境的api）
  ├── .env.local                             # 本地环境（local,用于本地开发，连接本地api）
  ├── .env.prod                              # 生产环境（prod, 生产环境）
