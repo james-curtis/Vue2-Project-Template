@@ -28,6 +28,7 @@ top
  │   │   └── table-page.js
  │   ├── datas                              # 模拟数据，临时存放
  │   ├── directives                         # 自定义指令
+ │   ├── dto                                # 数据传输对象即Data Transfer Object
  │   ├── entity                             # 实体，类似后端的实体，也称model层
  │   ├── filters                            # 过滤器，全局工具
  │   ├── lib                                # 外部引用的插件存放及修改文件
