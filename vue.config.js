@@ -37,9 +37,9 @@ module.exports = defineConfig({
         algorithm: 'gzip',
         test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'),
         threshold: 10240,
-        minRatio: 0.8
-      })
-    ]
+        minRatio: 0.8,
+      }),
+    ],
   },
   // chainWebpack(config) {
   //     // set svg-sprite-loader
@@ -59,5 +59,5 @@ module.exports = defineConfig({
   //         })
   //         .end();
   // },
-  transpileDependencies: true
+  transpileDependencies: true,
 });

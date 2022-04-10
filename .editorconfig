@@ -1,9 +1,39 @@
 root = true
 
 [*]
+# 文件字符编码
+# 可能的值
+# · latin1
+# · utf-8
+# · utf-16be
+# · utf-16le
+# · utf-8-bom
 charset = utf-8
+
+# 缩进样式
+# 这些值不区分大小写。它们将由核心库小写。
+# 可能的值
+# · tab
+# · space
 indent_style = space
+
+# 缩进大小（单倍行距字符）
+# 这些值不区分大小写。它们将由核心库小写。
+# 可能的值
+# · 整数
+# · tab
 indent_size = 2
+
+# 行尾文件格式（Unix，DOS，Mac）
+# 这些值不区分大小写。它们将由核心库小写。
+# 可能的值
+# · lf
+# · crlf
+# · cr
 end_of_line = lf
+
+# 表示文件是否应以换行符结尾
+# 可能的值
+# · true
+# · false
 insert_final_newline = true
-trim_trailing_whitespace = true

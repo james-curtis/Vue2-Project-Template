@@ -3,15 +3,16 @@ import config from '@/config';
 // 之所以封装这个axios，是因为在一些请求中，无法上传信息，很尴尬，估计原因是继承的有问题，无法携带headers
 export const baseUrl = config.baseUrl.apiUrl;
 
-let axios = Axios.create({
+const baseAxios = Axios.create({
   baseURL: baseUrl,
   timeout: 5000,
   headers: {
-    'Content-Type': 'application/json; charset=utf-8'
-  }
+    'Content-Type': 'application/json; charset=utf-8',
+  },
 });
 
-axios.interceptors.request.use(
+
+baseAxios.interceptors.request.use(
   function (config) {
     // 在发送请求之前做些什么
     return config;
@@ -19,10 +20,10 @@ axios.interceptors.request.use(
   function (error) {
     // 对请求错误做些什么
     return Promise.reject(error);
-  }
+  },
 );
 // 添加响应拦截器
-axios.interceptors.response.use(
+baseAxios.interceptors.response.use(
   res => {
     if (res.config.responseType === 'blob') {
       let isReturnJson = res.headers && res.headers['content-type'] && res.headers['content-type'].indexOf('json') > -1;
@@ -33,7 +34,7 @@ axios.interceptors.response.use(
           let content = reader.result;
           let parseRes = JSON.parse(content); // 错误信息
           return validateResponseCode({
-            data: parseRes
+            data: parseRes,
           });
         };
         reader.readAsText(res.data);
@@ -50,15 +51,15 @@ axios.interceptors.response.use(
   error => {
     // 对响应错误做点什么
     return Promise.reject(error);
-  }
+  },
 );
 
-function validateResponseCode (res) {
+function validateResponseCode(res) {
   let { data } = res;
   return Promise.resolve(data);
 }
 
-function blobToText (blob) {
+function blobToText(blob) {
   return new Promise((resolve, reject) => {
     const fileReader = new FileReader();
     fileReader.readAsText(blob);
@@ -79,18 +80,21 @@ function blobToText (blob) {
 }
 
 export const postFileUploadAxios = (url, data) => {
-  return axios.post(url, data, { headers: { 'Content-Type': 'multipart/form-data' } });
+  return baseAxios.post(url, data, { headers: { 'Content-Type': 'multipart/form-data' } });
 };
 
 export const getDownloadAxios = (url) => {
-  return axios.get(url, { responseType: 'blob' });
+  return baseAxios.get(url, { responseType: 'blob' });
 };
 
 export const postDownloadAxios = (url, data) => {
-  return axios.post(url, data, { responseType: 'blob' });
+  return baseAxios.post(url, data, { responseType: 'blob' });
 };
 
-function download (res) {
+export { baseAxios }
+
+
+function download(res) {
   let reader = new FileReader();
   let data = res.data;
   reader.onload = e => {
@@ -110,7 +114,7 @@ function download (res) {
 }
 
 //  模拟点击a 标签进行下载
-function executeDownload (data, fileName) {
+function executeDownload(data, fileName) {
   if (!data) {
     return;
   }
